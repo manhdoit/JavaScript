@@ -1,0 +1,221 @@
+body {
+    font-size: 14px;
+}
+
+.list-item {
+    border: 1px solid red;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: rotatenoscale 0.1s infinite;
+    background: orange;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow: hidden;
+    transition: 300ms ease all;
+}
+
+.list-item span {
+    width: 100%;
+    height: 100%;
+}
+
+.top-right {
+    background: red;
+}
+
+.bottom-right {
+    background: blue;
+}
+
+.bottom-left {
+    background: orange;
+}
+
+.top-left {
+    background: yellow;
+}
+
+@keyframes rotatenoscale {
+    0% {
+        transform: rotate(0deg);
+        /* margin-bottom: -0px; */
+    }
+    10% {
+        transform: rotate(36deg);
+        /* margin-bottom: -5px; */
+    }
+    20% {
+        transform: rotate(72deg);
+        /* margin-bottom: -10px; */
+    }
+    30% {
+        transform: rotate(108deg);
+        /* margin-bottom: -5px; */
+    }
+    40% {
+        transform: rotate(144deg);
+        /* margin-bottom: 0px; */
+    }
+    50% {
+        transform: rotate(180deg);
+        /* margin-bottom: -5px; */
+    }
+    60% {
+        transform: rotate(216deg);
+        /* margin-bottom: -10px; */
+    }
+    70% {
+        transform: rotate(252deg);
+        /* margin-bottom: -5px; */
+    }
+    80% {
+        transform: rotate(288deg);
+        /* margin-bottom: -10px; */
+    }
+    90% {
+        transform: rotate(324deg);
+        /* margin-bottom: -5px; */
+    }
+    100% {
+        transform: rotate(360deg);
+        /* margin-bottom: -5px; */
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) scale(1);
+        /* margin-bottom: -0px; */
+    }
+    10% {
+        transform: rotate(36deg) scale(1.1);
+        /* margin-bottom: -5px; */
+    }
+    20% {
+        transform: rotate(72deg) scale(1.2);
+        /* margin-bottom: -10px; */
+    }
+    30% {
+        transform: rotate(108deg) scale(1.3);
+        /* margin-bottom: -5px; */
+    }
+    40% {
+        transform: rotate(144deg) scale(1.4);
+        /* margin-bottom: 0px; */
+    }
+    50% {
+        transform: rotate(180deg) scale(1.5);
+        /* margin-bottom: -5px; */
+    }
+    60% {
+        transform: rotate(216deg) scale(1.4);
+        /* margin-bottom: -10px; */
+    }
+    70% {
+        transform: rotate(252deg) scale(1.3);
+        /* margin-bottom: -5px; */
+    }
+    80% {
+        transform: rotate(288deg) scale(1.2);
+        /* margin-bottom: -10px; */
+    }
+    90% {
+        transform: rotate(324deg) scale(1.1);
+        /* margin-bottom: -5px; */
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        /* margin-bottom: -5px; */
+    }
+}
+
+#cartWrap {
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 30px;
+    max-width: 900px;
+    margin: auto;
+}
+
+#cartWrap li {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    list-style: none;
+}
+
+span.total-price {
+    grid-column: 5;
+}
+
+
+/*====================*/
+
+.productWrap {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    overflow: hidden;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    grid-column-gap: 30px;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* ================================== */
+
+#header {
+    max-width: 700px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 150px 150px 1fr;
+}
+
+label {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.selectForm {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#totalPrice {
+    grid-column: 3;
+    grid-row: 1;
+    text-align: right;
+}
+
+#productListWrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0;
+    max-width: 700px;
+    margin: auto;
+}
+
+#productListWrap .product-item {
+    display: grid;
+    grid-template-columns: 150px 1fr 100px 100px;
+}
+
+.product-item img {
+    max-height: 100px;
+}
