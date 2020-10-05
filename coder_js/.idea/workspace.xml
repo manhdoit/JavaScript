@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6b08b0f2-f528-4e22-b517-1d41ea165c06" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/31-npm/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/31-npm/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/31-npm/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/32-JSON/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/32-JSON/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/32-JSON/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/32-JSON/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/33-if-else/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/34-ternary-operator/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/36-switch-case/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/38-student-manager/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/38-student-manager/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/38-student-manager/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/38-student-manager/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/39-sync-vs-async/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/39-sync-vs-async/song1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/39-sync-vs-async/song2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/40-promise/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/40-promise/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/40-promise/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/40-promise/song1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/40-promise/song2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/42-promise-all/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/42-promise-all/song1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/42-promise-all/song2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/42-promise-all/song3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/43-node-co/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/43-node-co/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/43-node-co/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/43-node-co/song1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/43-node-co/song2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/43-node-co/song3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/44-async-await/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/46-inerval/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/46-inerval/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/46-inerval/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/cat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/index-2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/index_2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/index_2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/mouse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/node-build-modules/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/node-build-modules/song-2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/node-build-modules/song.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_A-Z/notes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/10-apply/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/12-class/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/13-class-inheritance/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/14-method-overriding/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/15-super/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/8-default-parameters/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/9-call/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/Template_string/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/arguments/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/arrow_function/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/function_context_bind/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/function_context_bind/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JS_Advanced/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1hDk1WmTmxl4dVLEBZnQ2Y5RGEt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b08b0f2-f528-4e22-b517-1d41ea165c06" name="Default Changelist" comment="" />
+      <created>1599552837398</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599552837398</updated>
+      <workItem from="1599552838881" duration="3723000" />
+      <workItem from="1599583613428" duration="2341000" />
+      <workItem from="1599670337740" duration="2370000" />
+      <workItem from="1600100641301" duration="166000" />
+      <workItem from="1600163110631" duration="3257000" />
+      <workItem from="1600192749533" duration="5723000" />
+      <workItem from="1600220808171" duration="1833000" />
+      <workItem from="1600306247393" duration="11004000" />
+      <workItem from="1600419165805" duration="1392000" />
+      <workItem from="1600740765863" duration="6390000" />
+      <workItem from="1600822445166" duration="3585000" />
+      <workItem from="1600911509757" duration="5177000" />
+      <workItem from="1601026990643" duration="212000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="505" y="251" width="670" height="662" key="search.everywhere.popup" timestamp="1599670860461">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1599560260842" />
+    <state x="505" y="251" width="670" height="662" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1599670860461" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/46-inerval/index.js</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/46-inerval/index.js</url>
+          <line>33</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/JS_Advanced/13-class-inheritance/index.js</url>
+          <line>39</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,0 +1,6 @@
+fs.readFileSync(path[,options])
+
+
+var fs = require('fs');
+
+fs.writeFileSync(file, data[,options])

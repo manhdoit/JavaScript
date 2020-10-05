@@ -1,0 +1,9 @@
+.todoItem {
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
+}
+.TodoItem-complete {
+    text-decoration: line-through;
+    opacity: 0.3;
+}
