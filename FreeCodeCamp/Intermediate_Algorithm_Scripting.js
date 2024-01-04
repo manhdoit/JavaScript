@@ -1,10 +1,61 @@
+/*==== Sum All Odd Fibonacci Numbers ====*/
+function sumFibs(num) {
+	let sum = 0;
+	do {
+		sum = 
+	}
+	return num;
+}
+
+sumFibs(4);
+
+
+// ***convertHTML***
+
+function convertHTML(str) {
+	let temp = str.split("");
+	for (let i = 0; i < temp.length; i++) {
+		switch (temp[i]) {
+			case "<":
+				temp[i] = "&lt;";
+				break;
+			case "&":
+				temp[i] = "&amp;";
+				break;
+			case ">":
+				temp[i] = "&gt;";
+				break;
+			case '"':
+				temp[i] = "&quot;";
+				break;
+			case "'":
+				temp[i] = "&apos;";
+				break;
+		}
+	}
+	temp = temp.join("")
+	return temp;
+}
+
+// console.log(convertHTML("Dolce & Gabbana"));
+
+
+
 /*==== Sorted Union ====*/
 function uniteUnique(...arr) {
 	let newArr = [...arr]
-	return newArr;
+	let result = [];
+	for (let i = 0; i < newArr.length; i++) {
+		for (let j = 0; j < newArr[i].length; j++){
+			if (!result.includes(newArr[i][j])) {
+				result.push(newArr[i][j]);
+			}
+		}
+	}
+	return result;
 }
 
-console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+// console.log(uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8]));
 
 
 /*==== Missing letters ====*/
