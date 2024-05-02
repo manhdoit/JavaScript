@@ -1,0 +1,36 @@
+.calculator {
+	display: grid;
+	gap: 20px;
+	  width: 230px;
+    margin: 0 auto;
+    background: black;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+.screen-display{
+	    padding: 10px;
+    background: grey;
+    border-radius: 5px;
+    text-align: right;
+    font-size: 32px;
+}
+.calculator-keys {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	width: 100%;
+	gap: 10px;
+}
+button {
+	width: 50px;
+	height: 50px;
+	border: none;
+	background-color: beige;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.equal-sign{
+	grid-column: span 2;
+	width: auto;
+}
