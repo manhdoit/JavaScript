@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container h-100">
+		<div class="budget-app">
+			<div class="budget-header">
+				<div>
+					Available Budget in <span class="time">May 2024</span>:
+					
+					<h2 class="total-budget">0</h2>
+					
+				</div>
+				
+				<div class="total-income">
+					<span class="total-income-label">Income</span>
+					<span class="total-income-value">0</span>
+				</div>
+				<div class="total-expenses">
+					<span class="total-expenses-label">Expenses</span>
+					<span class="total-expenses-value">0</span>
+				</div>
+			</div>
+			<div class="budget-input">
+				<div class="budget-disclosure">
+					<button id="budget-disclosure-button" class=" budget-type-select">Expenses</button>
+					<ul class="budget-input-type-list unstyled budget-selector">
+						<li class="budget-input-type-item budget-input-type--expenses" data-budget-type="expenses">Expenses</li>
+						<li class="budget-input-type-item budget-input-type--income" data-budget-type="income">Income</li>
+					</ul>
+				</div>
+				<div class="budget-title">
+					<input type="text" class="budget-title-input" placeholder="Add the budget">
+				</div>
+				<div class="budget-value">
+					<input type="number" class="budget-value-input" placeholder="$0">
+				</div>
+				<button id="add-budget">add</button>
+			</div>
+			<div class="budget-list">
+				<div class="budget-income">
+					<h3 class="budget-list-title">Income</h3>
+					<ul class="budget-income-list unstyled">
+					</ul>
+				</div>
+				<div class="budget-expenses">
+					<h3 class="budget-list-title">expenses</h3>
+					<ul class="budget-expenses-list unstyled">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="app.js"></script>
+</body>
+
+</html>
