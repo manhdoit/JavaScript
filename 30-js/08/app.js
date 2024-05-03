@@ -10,9 +10,16 @@ const totalBudgetDisplay =  document.querySelector('.total-budget');
 let totalBudgetValue = 0 
 
 
-let timeDisplay = document.querySelector('.time');
-const date = new Date();
-timeDisplay.innerText = date;
+
+function displayTime() {
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let timeDisplay = document.querySelector('.time');
+    const date = new Date();
+    timeDisplay.innerText = months[date.getMonth()] +` ${date.getFullYear()}` ;
+    
+}
+displayTime();
+
 function budgetDisclosur() {
 
     const budgetSelector = document.querySelector('.budget-selector');
@@ -58,16 +65,18 @@ function addBudget() {
     newBudgetItem.appendChild(newBudgetItemValue);
 
     if(budgetType == 'expenses') {
-        document.querySelector('.budget-expenses-list').appendChild(newBudgetItem);
+        
         totalExpensesValue = parseFloat(totalExpensesValue) + parseFloat(newBudgetValue);
         totalExpensesValue.toLocaleString();
         totalExpensesDisplay.textContent = totalExpensesValue.toLocaleString();
+        document.querySelector('.budget-expenses-list').appendChild(newBudgetItem);
 
     } else {
-        document.querySelector('.budget-income-list').appendChild(newBudgetItem);
+        
         totalIncomeValue = parseFloat(totalIncomeValue) + parseFloat(newBudgetValue);
         totalIncomeValue.toLocaleString();
         totalIncomeDisplay.textContent = totalIncomeValue.toLocaleString();
+        document.querySelector('.budget-income-list').appendChild(newBudgetItem);
     }
     totalBudget (totalIncomeValue, totalExpensesValue);
     clearBudgetValue();
@@ -75,12 +84,10 @@ function addBudget() {
 
 function totalBudget (income, expense) {
     totalBudgetValue = income - expense;
-    totalBudgetDisplay.textContent = totalBudgetValue;
+    totalBudgetDisplay.textContent = totalBudgetValue.toLocaleString();
 }
 
-document.querySelector('#add-budget').addEventListener('click', () => {
-    addBudget();
-})
+document.querySelector('#add-budget').addEventListener('click', addBudget);
 
 
 function clearBudgetValue(){
