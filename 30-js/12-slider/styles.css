@@ -1,0 +1,47 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+}
+
+.slider-media-list{
+	display: grid;
+	grid-template-columns: repeat(10,1fr);
+	gap: 18px;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.slider-media{
+	width: 325px;
+	height: 400px;
+}
+
+.slider-scrollbar{
+	height: 10px;
+	width: 100%;
+	background-color: red;
+	border-radius: 10px;
+}
+
+.scrollbar-track {
+	height: 100%;
+	width: 100%;
+	background-color: #ccc;
+	position: relative;
+	border-radius: 10px;
+}
+
+.scrollbar-thumb {
+	position: absolute;
+	height: 100%;
+	width: 50%;
+	background-color: black;
+	border-radius: 10px;
+}

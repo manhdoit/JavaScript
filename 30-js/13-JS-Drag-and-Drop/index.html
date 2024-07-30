@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body style="background-color: #16171A;">
+	<div class="shadow_dom">Shopify Name Ideas Generator</div>
+	
+	<template id="tmpl">
+		<div class="content_business_ideas_generator">
+			<style>
+				.content_business_ideas_generator {
+					font-family: 'Poppins';
+				}
+	
+				.spin {
+					transform: rotate(45deg);
+					animation: rotate 1.2s linear infinite;
+					position: relative;
+					font-size: 20px;
+					width: 1em;
+					height: 1em;
+				}
+	
+				.spin i {
+					position: absolute;
+					width: 9px;
+					height: 9px;
+					background-color: #55f;
+					border-radius: 100%;
+					transform: scale(.75);
+					transform-origin: 50% 50%;
+					opacity: .3;
+					animation: spinMove 1s linear infinite alternate;
+				}
+	
+				.spin i:first-child {
+					top: 0;
+					left: 0
+				}
+	
+				.spin i:nth-child(2) {
+					top: 0;
+					right: 0;
+					animation-delay: .4s
+				}
+	
+				.spin i:nth-child(3) {
+					right: 0;
+					bottom: 0;
+					animation-delay: .8s
+				}
+	
+				.spin i:nth-child(4) {
+					bottom: 0;
+					left: 0;
+					animation-delay: 1.2s
+				}
+	
+				@keyframes rotate {
+					to {
+						-webkit-transform: rotate(405deg);
+						transform: rotate(405deg)
+					}
+				}
+	
+				@keyframes spinMove {
+					to {
+						opacity: 1
+					}
+				}
+	
+				.df {
+					display: flex;
+				}
+	
+				.fdc {
+					flex-direction: column;
+				}
+	
+				.jcc {
+					justify-content: center;
+				}
+	
+				.aic {
+					align-items: center;
+				}
+	
+				.fdc {
+					flex-direction: column;
+				}
+	
+				[style*="--mt"] {
+					margin-top: var(--mt);
+				}
+	
+				.table.brand_name td {
+					width: calc(100%/5);
+				}
+	
+				.result_data {
+					display: none;
+				}
+	
+				.hide-loading {
+					display: none;
+				}
+	
+				.hidden {
+					display: none;
+				}
+	
+				.form__content {
+					display: grid;
+					grid-template-columns: repeat(1, 1fr);
+					grid-gap: 40px;
+					color: #fff;
+					max-width: 420px;
+					margin: 0 auto;
+				}
+	
+				.button--secondary,
+				.button--primary {
+					font-family: 'Poppins';
+					color: #fff;
+					font-size: 14px;
+					line-height: 24px;
+					height: 100%;
+					padding: 12px 24px;
+					background-color: #535AF7;
+					font-weight: bold;
+					border: none;
+					box-sizing: border-box;
+					text-align: center;
+					border-radius: 4px;
+				}
+	
+				.button--secondary {
+					color: #16171A;
+					background: #fff;
+				}
+	
+				.button--group {
+					gap: 24px;
+					margin-top: 48px;
+				}
+	
+				input {
+					height: 68px;
+					background: #fff;
+					border: 1px solid #fff;
+					border-radius: 4px;
+					font-size: 16px;
+					padding: 10px 16px;
+					width: 100%;
+					box-sizing: border-box;
+				}
+	
+				.form__title {
+					color: #fff;
+					font-size: 16px;
+					line-height: 1.5;
+					font-weight: bold;
+					margin: 0 0 8px;
+				}
+	
+				.result_heading {
+					font-size: 25px;
+					color: #fff;
+					margin: 0 0 32px;
+				}
+	
+				.result_require_list {
+					padding: 0;
+					margin: 0 0 64px 25px;
+				}
+	
+				.result_require_list b {
+					color: #F25726;
+				}
+	
+				.content {
+					color: #fff;
+				}
+	
+				.brand_list {
+					list-style: decimal-leading-zero;
+					font-family: "SF Pro Display";
+					padding: 0;
+					margin: 0;
+					display: grid;
+					grid-template-columns: repeat(5, 1fr);
+					grid-gap: 32px 16px;
+				}
+	
+				.brand_list li {
+					font-weight: bold;
+					font-size: 16px;
+					margin-left: 32px;
+					color: #F25726;
+				}
+	
+				.brand_list li a {
+					color: #fff;
+				}
+	
+				
+	
+	
+				.promoBanner img {
+					width: 100%;
+					height: auto;
+					object-fit: contain;
+				}
+	
+				
+			.result-with-promo .result_require_list {
+				margin-bottom: 25px;
+			}
+
+			.result-with-promo .promoBanner {
+				max-width: 250px;
+				margin-bottom: 25px;
+			}
+
+			.result-with-promo .promoBanner__link,
+			.result-with-promo .promoBanner__thumb {
+				width: 100%;
+				display: block;
+			}
+	
+				@media(max-width: 767px) {
+					.form__content {
+						grid-template-columns: 1fr;
+						grid-gap: 24px;
+					}
+	
+					.brand_list {
+						grid-template-columns: repeat(2, 1fr);
+					}
+	
+					
+				}
+	
+				
+			</style>
+	
+			<form class="generate-form hidden">
+				<div class="form__content">
+					<div class="control hidden_" id="query">
+						<div class="select">
+							<input id="queryInput" placeholder="Enter what you have in mind" required></input>
+						</div>
+						<div class="control df jcc hidden_" style="margin-top: 48px;">
+							<button class="button button--primary submit-data" type="button">Generate shop name</button>
+						</div>
+					</div>
+				</div>
+			</form>
+	
+			<div class="content loading df jcc aic fdc" style="height: 400px;">
+				<div class="spin">
+					<i></i><i></i><i></i><i></i>
+				</div>
+				<div style="color: #fff;margin-top: 16px;">
+					Takes a few second to generate business ideas
+				</div>
+	
+			</div>
+	
+			<div class="content result result_data result-with-promo">
+				<h3 class="result_heading">Based on your requirements:</h3>
+				<ul class="result_require_list">
+					<li><b>Your draft idea: </b> <span id="query"></span></li>
+				</ul>
+				<div class="promoBanner">
+					<a class="promoBanner__link" href="https://shopify.pxf.io/6eYQDb" target="_blank">
+						<img class="promoBanner__thumb"
+							src="https://cdn.shopify.com/s/files/1/0090/9236/6436/files/Blum_-_Celia.png?v=1716890672" alt="">
+					</a>
+				</div>
+				<h3 class="result_heading">Top 20 jewelry brand name ideas for your inspiration</h3>
+				<div class="list brand_name_list"></div>
+				<div class="table brand_name" hidden></div>
+				<p style="
+					margin: 35px 0 0;
+					color: rgba(255,255,255,0.6);
+					font-family: 'SF Pro Display';
+					font-size: 16px;
+					">
+					The main goal of this tool is to give you inspiration for your unique brand name.
+				</p>
+				<div class="control df button--group jcc">
+					<button class="button button--secondary re-generate-idea" type="button">Get more ideas</button>
+					<a href="https://shopify.pxf.io/4PjAyr" class="button button--primary submit-data" target="_blank">
+						Turn Ideas into Income with Shopify
+					</a>
+				</div>
+			</div>
+			<script>
+				const shadowDocument = document.querySelector(".shadow_dom").shadowRoot;
+				const form = shadowDocument.querySelector(".generate-form");
+				const loadingDOM = shadowDocument.querySelector(".loading");
+				const addOptionForSelectDOM = (target, options) => {
+					const selectedDom = form.querySelector(`${target}`);
+					if (selectedDom.children.length > 1) {
+						Array.from(selectedDom.children).forEach(ele => {
+							if (ele.value) {
+								selectedDom.removeChild(ele)
+							}
+						})
+					}
+					if (!options.length) {
+						return
+					}
+					options.forEach(item => {
+						const option = document.createElement("option");
+						option.value = item;
+						option.innerHTML = item;
+						selectedDom.appendChild(option)
+					})
+				};
+
+				function convertFormDataToJson() {
+
+					let query = form.querySelector('#queryInput').value.toLowerCase();
+					return { prompt: `I'm the business owner of the retail store, and my store sells jewelry, give me 20 brand name ideas including ${query}`, query }
+				}
+
+				function createTable(data, detect, numCol) {
+					const table = document.createElement("table");
+					table.classList.add("table", "is-bordered");
+					chunk(data, numCol).map(i => {
+						if (i.length < numCol) {
+							const numMissOperator = numCol - i.length;
+							for (let index = 0; index < numMissOperator; index++) {
+								i.push("")
+							}
+						}
+						return i.map(i => i || {
+							name: ""
+						})
+					}).forEach(rowData => {
+						const row = table.insertRow();
+						rowData.forEach(({
+							name
+						}) => {
+							const cell = row.insertCell();
+							if (name) {
+								const a = document.createElement("a");
+								a.innerHTML = name;
+								cell.appendChild(a)
+							}
+						})
+					});
+					shadowDocument.querySelector(`${detect}`)?.appendChild(table)
+				}
+				function createList(data, detect, ccs_class) {
+					const ul = document.createElement("ul");
+					ul.classList.add(ccs_class);
+					data.forEach((e, i) => {
+						const li = document.createElement("li");
+						const a = document.createElement("a");
+						a.innerHTML = e.name;
+						li.appendChild(a);
+						ul.appendChild(li);
+					});
+
+
+					shadowDocument.querySelector(`${detect}`)?.append(ul);
+				};
+				function generatePromoBanner() {
+					/* Function built for SHTMRKT-1030 */
+					const ThemeDistribute = {
+						blumCelia: {
+							thumbnail: "https://cdn.shopify.com/s/files/1/0090/9236/6436/files/Blum_-_Celia.png?v=1716890672",
+							affiliateLink: "https://shopify.pxf.io/6eYQDb"
+						}
+					};
+					let themeName = 'blumCelia';
+					if (themeName) {
+						const promoBanner = document.createElement('div');
+						const promoBannerEl = `<a href="${ThemeDistribute[themeName].affiliateLink}" style="display: block;" target="_blank"><img src="${ThemeDistribute[themeName].thumbnail}" /></a>`;
+						const promoBannerParent = shadowDocument.querySelector('.brand_name_list');
+						promoBanner.classList.add("promoBanner");
+						promoBanner.innerHTML = promoBannerEl;
+						promoBannerParent.appendChild(promoBanner);
+						/*promoBannerParent.classList.add('brand-with-promo');*/
+					};
+				};
+				function chunk(arr, numChunk) {
+					return arr.reduce((chunkArr, item, index) => {
+						const indexChunk = Math.floor(index / numChunk);
+						chunkArr[indexChunk] = [].concat(chunkArr[indexChunk] || [], item);
+						return chunkArr
+					}, [])
+				}
+				const checkClassLoading = () => {
+					const loadingDOM = shadowDocument.querySelector(".loading");
+					return [...loadingDOM.classList].includes("hide-loading")
+				};
+				window.addEventListener("load", function () {
+					!checkClassLoading() && loadingDOM?.classList?.add("hide-loading");
+					form.classList.remove("hidden");
+					shadowDocument.querySelector(".submit-data").parentElement.classList.remove("hidden")
+				});
+				let queryInput = form.querySelector('#queryInput');
+				const btnSubmit = shadowDocument.querySelector(".submit-data");
+				queryInput.addEventListener('input', () => {
+					queryInput.setCustomValidity("");
+				});
+				btnSubmit.addEventListener("click", function () {
+					if (!form.checkValidity()) {
+						form.reportValidity()
+					} else {
+						const {
+							query
+						} = convertFormDataToJson();
+
+
+						const badWords = ["tit", "butt", "anal", "shit", "dick", "ass", "balls", "hell", "homo", "bum", "muff", "ike", "blow job", "penis", "sex toy", "dildo", "crap", "sex", "fellatio", "scrotum", "boner", "bondage", "piss", "x-rated", "wank", "blowjob", "jizz", "spunk", "porno", "xxx", "porn", "pornstar", "anime", "fetish", "pussy", "milf", "arse", "bdsm", "fuck", "whore", "cunt", "masturbate", "labia", "clitoris", "nude", "casual encounters", "vagina", "boob", "twat", "slut", "anus", "kinky", "asshole", "bitch", "bastard", "poop", "butthole", "nigga", "fag", "buttplug", "turd", "bugger", "damn", "wtf", "prick", "nigger", "goddamn", "ballsack", "faggot", "felching", "smegma", "feck", "pube", "bollock", "biatch", "lmao", "fellate", "f u c k", "pornhub", "two girls one cup", "lmfao", "bollok", "knobend", "knob end", "god damn", "2 girls one cup", "tobacco", "cigarette", "nicotine", "mdma", "weed", "hookah", "cocaine", "methamphetamine", "xanax", "shisha", "lsd", "canabis", "meth", "fentanyl", "vape", "juul", "vyvanse", "vaping", "amphetamine", "adderall", "adderal", "methanphatamine", "methamphetamemes", "child labor", "scam", "labour", "arrested", "child labour", "scandal", "exploit", "refugees", "labor", "refugee", "stealing", "arrest", "unfair", "strike", "donald trump", "recall", "steal", "conspiracy", "robbery", "trump", "sued", "unpaid", "wrongfully fired", "racial profiling", "liberal bias", "too much ice", "underfilling", "corruption", "death", "DUI", "dui", "murder", "2 girls 1 cup", "2g1c", "4r5e", "5h1t", "5hit", "5ht", "666", "@$$", "a s s", "a s shole", "a55", "a55hole", "a_s_s", "abbo", "abeed", "abuse", "acrotomophilia", "aeolus", "africoon", "ahole", "alabama hot pocket", "alaskan pipeline", "alligator bait", "alligatorbait", "amcik", "analannie", "analprobe", "analsex", "andskota", "anilingus", "anus", "apeshit", "ar5e", "arabush", "arabushs", "areola", "areole", "argie", "arian", "armo", "armos", "aroused", "arrse", "arschloch", "arse", "arsehole", "aryan", "ash0le", "ash0les", "asholes", "ass monkey", "ass-fucker", "ass-hat", "ass-pirate", "assbag", "assbagger", "assbandit", "assbang", "assbanged", "assbanger", "assbangs", "assbite", "assblaster", "assclown", "asscock", "asscowboy", "asscracker", "asses", "assface", "assfuck", "assfucker", "assfukka", "assgoblin", "assh0le", "assh0lez", "asshat", "asshead", "assho1e", "asshole", "assholes", "assholz", "asshopper", "asshore", "assjacker", "assjockey", "asskiss", "asskisser", "assklown", "asslick", "asslicker", "asslover", "assman", "assmaster", "assmonkey", "assmunch", "assmuncher", "assnigger", "asspacker", "asspirate", "asspuppies", "assrammer", "assranger", "assshit", "assshole", "asssucker", "asswad", "asswhole", "asswhore", "asswipe", "asswipes", "auto erotic", "autoerotic", "ayir", "azazel", "azz", "azzhole", "b a s t a r d", "b i t c h", "b o o b", "b!+ch", "b!tch", "b!tchin", "b*tch", "b00b", "b00bies", "b00biez", "b00bs", "b00bz", "b17ch", "b1tch", "b7ch", "babeland", "babes", "baby batter", "baby juice", "backdoor", "backdoorman", "badfuck", "bagging", "ball gag", "ball gravy", "ball kicking", "ball licking", "ball sack", "ball sucking", "ballbag", "balllicker", "ballsack", "bampot", "bangbro", "bangbros", "banger", "banging", "bareback", "barely legal", "barelylegal", "barenaked", "barf", "barface", "barfface", "bassterd", "bassterds", "bastard", "bastardo", "bastards", "bastardz", "basterds", "basterdz", "bastinado", "bawdy", "bazongas", "bazooms", "bbw", "bdsm", "beaner", "beaners", "beaney", "beaneys", "beardedclam", "beastality", "beastial", "beastiality", "beastility", "beatch", "beatoff", "beatyourmeat", "beaver cleaver", "beaver lips", "beef curtains", "beeyotch", "bellend", "beotch", "bestial", "bestiality", "bi+ch", "bi7ch", "biatch", "big black", "big breasts", "big knockers", "big tits", "bigass", "bigbastard", "bigbreasts", "bigbutt", "bigtits", "bimbo", "bimbos", "bint", "birdlock", "bitch", "bitchass", "bitched", "bitcher", "bitchers", "bitches", "bitchez", "bitchin", "bitching", "bitchslap", "bitchtit", "bitchy", "biteme", "bitties", "black cock", "blackcock", "blackman", "blonde action", "blonde on blonde action", "blonde on blonde", "bloodclaat", "bloody", "blow j", "blow job", "blow your l", "blow your load", "blowjob", "blowjobs", "blue waffle", "bluegum", "bluegums", "blumpkin", "bo ob", "bo obs", "boang", "boche", "boches", "bodily", "boffing", "bogan", "bohunk", "boink", "boiolas", "bollick", "bollock", "bollocks", "bollok", "bollox", "bombers", "bombing", "bomd", "bondage", "boned", "boner", "boners", "bong", "boob", "boobies", "boobs", "booby", "boobz", "boody", "booger", "bookie", "boong", "boonga", "boongas", "boongs", "boonie", "boonies", "booobs", "boooobs", "booooobs", "booooooobs", "bootee", "bootlip", "bootlips", "booty", "boozer", "boozy", "bosch", "bosche", "bosches", "boschs", "bosomy", "bounty bar", "bounty bars", "bountybar", "brea5t", "breastjob", "breastlover", "breastman", "brothel", "brown showers", "brunette action", "btch", "buceta", "buddhahead", "buddhaheads", "buffies", "bugger", "buggered", "buggery", "bukkake", "bule", "bules", "bullcrap", "bulldike", "bulldyke", "bullet vibe", "bullshit", "bullshits", "bullshitted", "bullturds", "bumblefuck", "bumfuck", "bung hole", "bunga", "bungas", "bunghole", "bunny fucker", "burr head", "burr heads", "burrhead", "burrheads", "butchbabes", "butt plug", "butt-pirate", "buttbang", "buttcheeks", "buttface", "buttfuck", "buttfucker", "buttfuckers", "butthead", "butthole", "buttman", "buttmuch", "buttmunch", "buttmuncher", "buttons", "buttpirate", "buttplug", "buttstain", "buttwipe", "byatch", "c u n t", "c-0-c-k", "c-o-c-k", "c-u-n-t", "c.0.c.k", "c.o.c.k.", "c.u.n.t", "c0ck", "c0cks", "c0cksucker", "c0k", "cabron", "caca", "cacker", "cahone", "camel jockey", "camel jockeys", "camel toe", "cameljockey", "cameltoe", "camgirl", "camslut", "camwhore", "carpet muncher", "carpetmuncher", "carruth", "cawk", "cawks", "cazzo", "cervix", "chav", "cheese eating surrender monkey", "cheese eating surrender monkies", "cheeseeating surrender monkey", "cheeseeating surrender monkies", "cheesehead", "cheeseheads", "cherrypopper", "chickslick", "china swede", "china swedes", "chinaman", "chinamen", "chinaswede", "chinaswedes", "chinc", "chincs", "ching chong", "ching chongs", "chinga", "chingchong", "chingchongs", "chink", "chinks", "chinky", "choad", "chocolate rosebuds", "chode", "chodes", "chonkies", "chonky", "chonkys", "chraa", "christ killer", "christ killers", "chug", "chugs", "chuj", "chunger", "chungers", "chunkies", "chunkys", "chute", "cipa", "circlejerk", "cl1t", "clamdigger", "clamdiver", "clamps", "clansman", "clansmen", "clanswoman", "clanswomen", "cleveland steamer", "climax", "clit", "clitface", "clitfuck", "clitoris", "clitorus", "clits", "clitty", "clogwog", "clover clamps", "clusterfuck", "cnts", "cntz", "cnut", "cocain", "cocaine", "cock-head", "cock-sucker", "cockbite", "cockblock", "cockblocker", "cockburger", "cockcowboy", "cockface", "cockfight", "cockfucker", "cockhead", "cockholster", "cockknob", "cockknocker", "cocklicker", "cocklover", "cockmonkey", "cockmunch", "cockmuncher", "cocknob", "cocknose", "cocknugget", "cockqueen", "cockrider", "cockshit", "cocksman", "cocksmith", "cocksmoker", "cocksucer", "cocksuck", "cocksucked", "cocksucker", "cocksucking", "cocksucks", "cocksuka", "cocksukka", "cocktease", "cocky", "cohee", "coital", "coitus", "cok", "cokmuncher", "coksucka", "commie", "condom", "coochie", "coochy", "coolie", "coolies", "cooly", "coon ass", "coon asses", "coonass", "coonasses", "coondog", "coons", "cooter", "coprolagnia", "coprophilia", "copulate", "corksucker", "cornhole", "cowgirl", "cra5h", "crackcocain", "crackpipe", "crackwhore", "crap", "crapola", "crapper", "crappy", "crash", "creampie", "crotch", "crotchjockey", "crotchmonkey", "crotchrot", "cuck", "cum face", "cum licker", "cumbubble", "cumdumpster", "cumfest", "cumjockey", "cumlickr", "cummer", "cummin", "cumming", "cumquat", "cumqueen", "cums", "cumshot", "cumshots", "cumslut", "cumstain", "cumsucker", "cumtart", "cunilingus", "cunillingus", "cunn", "cunnie", "cunnilingus", "cunntt", "cunny", "cunt", "cunteyed", "cuntface", "cuntfuck", "cuntfucker", "cunthole", "cunthunter", "cuntlick", "cuntlicker", "cuntlicking", "cuntrag", "cunts", "cuntslut", "cuntsucker", "cuntz", "curry muncher", "curry munchers", "currymuncher", "currymunchers", "cushi", "cushis", "cyalis", "cyberfuc", "cyberfuck", "cyberfucked", "cyberfucker", "cyberfuckers", "cyberfucking", "cybersex", "cyberslimer", "d0ng", "d0uch3", "d0uche", "d1ck", "d1ld0", "d1ldo", "d4mn", "dago", "dagos", "dahmer", "damm", "dammit", "damn", "damnation", "damned", "damnit", "darkey", "darkeys", "darkie", "darkies", "darky", "date rape", "daterape", "datnigga", "dawgie style", "dawgie-style", "daygo", "deapthroat", "deep throat", "deep throating", "deepaction", "deepthroat", "deepthroating", "defecate", "deggo", "dego", "degos", "demon", "dendrophilia", "destroyyourpussy", "deth", "diaperdaddy", "diaper daddy", "diaper head", "diaper heads", "diaperhead", "diaperheads", "dick pic", "dick-ish", "dickbag", "dickbeaters", "dickbrain", "dickdipper", "dickface", "dickflipper", "dickforbrains", "dickfuck", "dickhead", "dickheads", "dickhole", "dickish", "dickjuice", "dickless", "dicklick", "dicklicker", "dickman", "dickmilk", "dickpic", "dickripper", "dicks", "dicksipper", "dickslap", "dickslicker", "dickwad", "dickweasel", "dickweed", "dickwhipper", "dickwod", "dickzipper", "diddle", "dike", "dild0", "dild0s", "dildo", "dildos", "dilf", "diligaf", "dilld0", "dilld0s", "dillweed", "dimwit", "dingle", "dingleberries", "dingleberry", "dink", "dinks", "dipship", "dipshit", "dipstick", "dirsa", "dirty pillows", "dirty sanchez", "dix", "dlck", "dog style", "dog-fucker", "doggie style", "doggie", "doggie-style", "doggiestyle", "doggin", "dogging", "doggy style", "doggy-style", "doggystyle", "dolcett", "domination", "dominatricks", "dominatrics", "dominatrix", "dommes", "donkey punch", "donkeypunch", "donkeyribber", "doochbag", "doodoo", "doofus", "dookie", "doosh", "dot head", "dot heads", "dothead", "dotheads", "double dong", "double penetration", "doubledong", "doublepenetration", "douch3", "douche bag", "douche", "douche-fag", "douchebag", "douchebags", "douchewaffle", "douchey", "dp action", "dpaction", "dripdick", "drug", "dry hump", "dryhump", "duche", "dudette", "dumass", "dumb ass", "dumbass", "dumbasses", "dumbbitch", "dumbfuck", "dumbshit", "dummy", "dumshit", "dune coon", "dune coons", "dupa", "dvda", "dyefly", "dziwka", "earotics", "easyslut", "eat my ass", "eat my", "eatballs", "eatme", "eatmyass", "eatpussy", "ecchi", "ejackulate", "ejaculate", "ejaculated", "ejaculates", "ejaculating", "ejaculatings", "ejaculation", "ejaculations", "ejakulate", "ekrem", "ekto", "enculer", "enema", "enlargement", "erect", "erection", "erotic", "erotism", "escort", "esqua", "essohbee", "ethical slut", "evl", "excrement", "exkwew", "explosion", "extacy", "extasy", "f u c k e r", "f u c k e", "f u c k", "f u k", "f*ck", "f-u-c-k", "f.u.c.k", "f4nny", "f_u_c_k", "facefucker", "fack", "faeces", "faen", "fag", "fag1t", "fagbag", "faget", "fagfucker", "fagg", "fagg1t", "fagged", "fagging", "faggit", "faggitt", "faggot", "faggotcock", "faggs", "fagit", "fagot", "fagots", "fags", "fagt", "fagtard", "fagz", "faig", "faigs", "faigt", "fanculo", "fannybandit", "fannyflaps", "fannyfucker", "fanyy", "fartknocker", "farty", "fastfuck", "fatah", "fatass", "fatfuck", "fatfucker", "fatso", "fck", "fckcum", "fckd", "fcuk", "fcuker", "fcuking", "fecal", "feces", "feck", "fecker", "feg", "felatio", "felch", "felcher", "felching", "fellate", "fellatio", "feltch", "feltcher", "feltching", "female squirting", "femalesquirtin", "femalesquirting", "femdom", "fetish", "ficken", "figging", "fingerbang", "fingerfood", "fingerfuck", "fingerfucked", "fingerfucker", "fingerfuckers", "fingerfucking", "fingerfucks", "fingering", "fisted", "fister", "fistfuck", "fistfucked", "fistfucker", "fistfuckers", "fistfucking", "fistfuckings", "fistfucks", "fisting", "fisty", "flamer", "flange", "flasher", "flikker", "flipping the bird", "floo", "floozy", "flydie", "flydye", "foad", "fok", "fondle", "foobar", "fook", "fooker", "foot fetish", "footaction", "footfetish", "footfuck", "footfucker", "footjob", "footlicker", "footstar", "foreskin", "forni", "fornicate", "fotze", "foursome", "fourtwenty", "freakfuck", "freakyfucker", "freefuck", "freex", "frigg", "frigga", "frigger", "frotting", "fubar", "fucck", "fuck buttons", "fuck", "fuck-tard", "fucka", "fuckable", "fuckass", "fuckbag", "fuckbook", "fuckboy", "fuckbrain", "fuckbuddy", "fuckbutt", "fuckd", "fucked", "fuckedup", "fucker", "fuckers", "fuckersucker", "fuckface", "fuckfest", "fuckfreak", "fuckfriend", "fuckhead", "fuckheads", "fuckher", "fuckhole", "fuckin", "fuckina", "fucking", "fuckingbitch", "fuckings", "fuckingshitmotherfucker", "fuckinnuts", "fuckinright", "fuckit", "fuckknob", "fuckme", "fuckmehard", "fuckmonkey", "fuckn", "fucknugget", "fucknut", "fucknuts", "fucknutt", "fucknutz", "fuckoff", "fuckpig", "fuckr", "fucks", "fuckstick", "fucktard", "fucktards", "fuckup", "fuckwad", "fuckwhit", "fuckwhore", "fuckwit", "fuckwitt", "fuckyou", "fudge packer", "fudgepacker", "fugly", "fuk", "fukah", "fuken", "fuker", "fukin", "fuking", "fukk", "fukkah", "fukken", "fukker", "fukkin", "fuks", "fuktard", "fuktards", "fukwhit", "fukwit", "funeral", "funfuck", "fungus", "futanari", "futkretzn", "fuuck", "fux", "fux0r", "fvck", "fvk", "fxck", "g-spot", "g00k", "gae", "gang bang", "gangbang", "gangbanged", "gangbanger", "gangbangs", "gangsta", "ganja", "gator bait", "gatorbait", "gay sex", "gaymuthafuckinwhore", "gaysex", "geezer", "geni", "genital", "genitals", "getiton", "gfy", "giant cock", "gigolo", "ginzo", "ginzos", "gipp", "gippo", "gippos", "gipps", "girl on top", "girl on", "girls gone wild", "givehead", "glans", "glazeddonut", "goatcx", "goatse", "gob", "god dammit", "god damn", "god damnit", "god-dam", "god-damned", "godam", "godammit", "godamn", "godamnit", "goddam", "goddamit", "goddamm", "goddammit", "goddamn", "goddamned", "goddamnes", "goddamnit", "goddamnmuthafucker", "godsdamn", "gokkun", "golden shower", "goldenshower", "golliwog", "golliwogs", "gonad", "gonads", "gonorrehea", "gonzagas", "goo girl", "gooch", "goodpoop", "gook eye", "gook eyes", "gook", "gookeye", "gookeyes", "gookies", "gooks", "gooky", "gora", "goras", "goregasm", "gotohell", "goy", "goyim", "greaseball", "greaseballs", "gringo", "gringos", "groe", "groid", "groids", "grope", "gross", "grostulation", "group sex", "gspot", "gstring", "gtfo", "gub", "gubba", "gubbas", "gubs", "guiena", "guineas", "guizi", "gummer", "guro", "gwailo", "gwailos", "gweilo", "gweilos", "gyopo", "gyopos", "gyp", "gyped", "gypo", "gypos", "gypp", "gypped", "gyppie", "gyppies", "gyppo", "gyppos", "gyppy", "gyppys", "gypsys", "h e l l", "h o m", "h00r", "h0ar", "h0m0", "h0mo", "h0r", "h0re", "h4x0r", "hadji", "hadjis", "hairyback", "hairybacks", "haji", "hajis", "hajji", "hajjis", "half breed", "half caste", "halfbreed", "halfcaste", "hamas", "hand job", "handjob", "haole", "haoles", "hapa", "hard core", "hardcore", "hardcoresex", "hardon", "harem", "he11", "headfuck", "hebe", "hebes", "heeb", "heebs", "hells", "helvete", "henhouse", "hentai", "heroin", "herp", "herpes", "herpy", "heshe", "hijacker", "hijacking", "hillbillies", "hillbilly", "hindoo", "hiscock", "hitler", "hitlerism", "hitlerist", "hobag", "hodgie", "hoe", "hoer", "hoes", "holestuffer", "hom0", "homey", "homicide", "homobangers", "homodumbshit", "homoey", "honger", "honkers", "honkey", "honkeys", "honkie", "honkies", "honky", "hooch", "hooker", "hookers", "hoor", "hoore", "hootch", "hooter", "hooters", "hore", "hori", "horis", "hork", "horndawg", "horndog", "horney", "horniest", "horny", "horseshit", "hosejob", "hoser", "hot carl", "hot chick", "hotcarl", "hotdamn", "hotpussy", "hotsex", "hottotrot", "how to kill", "how to murder", "huevon", "huge fat", "hugefat", "hui", "hummer", "humped", "humper", "humpher", "humphim", "humpin", "humping", "husky", "hussy", "hustler", "hymen", "hymie", "hymies", "iblowu", "ikes", "ikey", "ikeymo", "ikeymos", "ikwe", "illegal", "illegals", "inbred", "incest", "indon", "indons", "injun", "injuns", "insest", "intercourse", "interracial", "intheass", "inthebuff", "israels", "j3rk0ff", "jack off", "jack-off", "jackass", "jackhole", "jackoff", "jackshit", "jacktheripper", "jail bait", "jailbait", "japcrap", "japie", "japies", "jebus", "jelly donut", "jerk off", "jerk", "jerk-off", "jerk0ff", "jerked", "jerkoff", "jerries", "jerry", "jesuschrist", "jewed", "jewess", "jiga", "jigaboo", "jigaboos", "jigarooni", "jigaroonis", "jigga", "jiggabo", "jiggaboo", "jiggabos", "jiggas", "jigger", "jiggerboo", "jiggers", "jiggy", "jihad", "jijjiboo", "jijjiboos", "jimfish", "jisim", "jism", "jiss", "jiz", "jizim", "jizin", "jizjuice", "jizm", "jizn", "jizz", "jizzd", "jizzed", "jizzim", "jizzin", "jizzn", "jizzum", "jugg", "juggs", "jugs", "jungle bunnies", "jungle bunny", "junglebunny", "junkie", "junky", "kacap", "kacapas", "kacaps", "kaffer", "kaffir", "kaffre", "kafir", "kanake", "kanker", "katsap", "katsaps", "kawk", "khokhol", "khokhols", "kigger", "kike", "kikes", "killer", "kills", "kimchis", "kinbaku", "kink", "kinkster", "kinky", "kissass", "kkk", "klan", "klansman", "klansmen", "klanswoman", "klanswomen", "klootzak", "knobbing", "knobead", "knobed", "knobend", "knobhead", "knobjocky", "knobjokey", "knobz", "knockers", "knulle", "kock", "kondum", "kondums", "kooch", "kooches", "koon", "kootch", "krap", "krappy", "kraut", "krauts", "kuffar", "kuk", "kuksuger", "kum", "kumbubble", "kumbullbe", "kumer", "kummer", "kumming", "kumquat", "kums", "kunilingus", "kunnilingus", "kunt", "kunts", "kuntz", "kurac", "kurwa", "kushi", "kushis", "kusi", "kwa", "kwai lo", "kwai los", "ky", "kyke", "kykes", "kyopo", "kyopos", "kyrpa", "l3i+ch", "l3i\\\\\\\\+ch", "l3itch", "labia", "lapdance", "lds", "leather restraint", "leather straight jacket", "leather straight", "leatherrestraint", "lebo", "lebos", "lech", "lemon party", "lemonparty", "leper", "libido", "licker", "licking", "lickme", "lilniglet", "limey", "limpdick", "limy", "lingerie", "lipshits", "lipshitz", "livesex", "lmfao", "loadedgun", "loin", "loins", "lolita", "lovebone", "lovegoo", "lovegun", "lovejuice", "lovemaking", "lovemuscle", "lovepistol", "loverocket", "lowlife", "lsd", "lubejob", "lubra", "lucifer", "luckycammeltoe", "lugan", "lugans", "lust", "lusting", "lusty", "lynch", "m-fucking", "m0f0", "m0fo", "m45terbate", "ma5terb8", "ma5terbate", "mabuno", "mabunos", "macaca", "macacas", "magicwand", "mahbuno", "mahbunos", "make me come", "makemecome", "makemecum", "male squirting", "mamhoon", "mams", "manhater", "manpaste", "maricon", "maricÃ³n", "marijuana", "masochist", "masokist", "massa", "massterbait", "masstrbait", "masstrbate", "mastabate", "mastabater", "master-bate", "masterb8", "masterbaiter", "masterbat", "masterbat3", "masterbate", "masterbates", "masterbating", "masterbation", "masterbations", "masterblaster", "mastrabator", "masturbat", "masturbate", "masturbating", "masturbation", "mattressprincess", "mau mau", "mau maus", "maumau", "maumaus", "mcfagget", "meatbeatter", "meatrack", "menage a trois", "menage", "merd", "meth", "mgger", "mggor", "mibun", "mick", "mickeyfinn", "mideast", "mierda", "milf", "minge", "minger", "missionary position", "missionary", "mo-fo", "mockey", "mockie", "mocky", "mof0", "mofo", "moky", "molest", "molestation", "molester", "molestor", "moneyshot", "monkleigh", "moolie", "moon cricket", "moon crickets", "mooncricket", "mooncrickets", "mormon", "moron", "moskal", "moskals", "moslem", "mosshead", "motha fucker", "motha fuker", "motha fukkah", "motha fukker", "mothafuck", "mothafucka", "mothafuckas", "mothafuckaz", "mothafucked", "mothafucker", "mothafuckers", "mothafuckin", "mothafucking", "mothafuckings", "mothafucks", "mother fucker", "mother fukah", "mother fuker", "mother fukkah", "mother fukker", "mother-fucker", "motherfuck", "motherfucka", "motherfucked", "motherfucker", "motherfuckers", "motherfuckin", "motherfucking", "motherfuckings", "motherfuckka", "motherfucks", "motherfvcker", "motherlovebone", "mothrfucker", "mouliewop", "mound of venus", "moundofvenus", "mr hands", "mrhands", "mtherfucker", "mthrfuck", "mthrfucker", "mthrfucking", "mtrfck", "mtrfuck", "mtrfucker", "muff diver", "muffdive", "muffdiver", "muffdiving", "muffindiver", "mufflikcer", "muie", "mulatto", "mulkku", "muncher", "mung", "munging", "munt", "munter", "murder", "murderer", "muschi", "mutha fucker", "mutha fukah", "mutha fuker", "mutha fukkah", "mutha fukker", "mutha", "muthafecker", "muthafuckaz", "muthafucker", "muthafuckker", "muther", "mutherfucker", "mutherfucking", "muthrfucking", "mzungu", "mzungus", "n1gga", "n1gger", "n1gr", "nad", "nads", "nambla", "nastt", "nasty", "nastybitch", "nastyho", "nastyslut", "nastywhore", "nawashi", "nazi", "nazis", "nazism", "necked", "necro", "negres", "negress", "negro", "negroes", "negroid", "negros", "neonazi", "nepesaurio", "nig nog", "nig", "niga", "nigar", "nigars", "nigas", "nigers", "nigette", "nigettes", "nigg", "nigg3r", "nigg4h", "nigga", "niggah", "niggahs", "niggar", "niggaracci", "niggard", "niggarded", "niggarding", "niggardliness", "niggardlinesss", "niggardly", "niggards", "niggars", "niggas", "niggaz", "nigger", "niggerhead", "niggerhole", "niggers", "niggle", "niggled", "niggles", "niggling", "nigglings", "niggor", "niggress", "niggresses", "nigguh", "nigguhs", "niggur", "niggurs", "niglet", "nignog", "nigor", "nigors", "nigr", "nigra", "nigras", "nigre", "nigres", "nigress", "nigs", "nigur", "niiger", "niigr", "nimphomania", "nimrod", "ninny", "nipple", "nipplering", "nipples", "nittit", "nlgger", "nlggor", "nob jokey", "nobhead", "nobjocky", "nobjokey", "nofuckingway", "nookey", "nookie", "nooky", "noonan", "nooner", "nsfw images", "nsfw", "nude", "nudger", "nudie", "nudies", "nudity", "numbnuts", "nut sack", "nutfucker", "nutsack", "nymph", "nympho", "nymphomania", "o c k", "octopussy", "omorashi", "one cup two girls", "one guy one jar", "one guy", "one jar", "ontherag", "orafis", "orally", "orga", "orgasim", "orgasim;", "orgasims", "orgasm", "orgasmic", "orgasms", "orgasum", "orgies", "orgy", "oriface", "orifice", "orifiss", "orospu", "osama", "ovum", "ovums", "p e n i s", "p i s", "p u s s y", "p.u.s.s.y.", "p0rn", "packi", "packie", "packy", "paddy", "paedophile", "paki", "pakie", "pakis", "paky", "palesimian", "pancake face", "pancake faces", "panooch", "pansies", "pansy", "panti", "pantie", "panties", "panty", "paska", "pastie", "pasty", "payo", "pcp", "pearlnecklace", "peck", "pecker", "peckerhead", "peckerwood", "pedo", "pedobear", "pedophile", "pedophilia", "pedophiliac", "peeenus", "peeenusss", "peehole", "peenus", "peepee", "peepshow", "peepshpw", "pegging", "peinus", "pen1s", "penas", "pendejo", "pendy", "penetrate", "penetration", "peni5", "penial", "penile", "penis", "penis-breath", "penises", "penisfucker", "penisland", "penislick", "penislicker", "penispuffer", "penthouse", "penus", "penuus", "perse", "perv", "perversion", "peyote", "phalli", "phallic", "phone sex", "phonesex", "phuc", "phuck", "phuk", "phuked", "phuker", "phuking", "phukked", "phukker", "phukking", "phuks", "phungky", "phuq", "pi55", "picaninny", "piccaninny", "picka", "pickaninnies", "pickaninny", "piece of shit", "pieceofshit", "piefke", "piefkes", "pierdol", "pigfucker", "piker", "pikey", "piky", "pillowbiter", "pillu", "pimmel", "pimp", "pimped", "pimper", "pimpis", "pimpjuic", "pimpjuice", "pimpsimp", "pindick", "pinko", "pises", "pisin", "pising", "pisof", "piss pig", "piss", "piss-off", "pissed", "pisser", "pissers", "pisses", "pissflaps", "pisshead", "pissin", "pissing", "pissoff", "pisspig", "pistol", "pizda", "playboy", "playgirl", "pleasure chest", "pleasurechest", "pms", "pocha", "pochas", "pocho", "pochos", "pocketpool", "pohm", "pohms", "polac", "polack", "polacks", "polak", "pole smoker", "polesmoker", "pollock", "pollocks", "pommie grant", "pommie grants", "pommie", "pommies", "pommy", "ponyplay", "poof", "poon", "poonani", "poonany", "poontang", "poontsee", "poop chute", "poopchute", "pooper", "pooperscooper", "pooping", "poorwhitetrash", "popimp", "porch monkey", "porch monkies", "porchmonkey", "porn", "pornflick", "pornking", "porno", "pornography", "pornos", "pornprincess", "pound town", "poundtown", "pplicker", "pr0n", "pr1c", "pr1ck", "pr1k", "prairie nigger", "prairie niggers", "premature", "preteen", "pric", "prick", "prickhead", "pricks", "prig", "prince albert piercing", "pron", "propaganda", "prostitute", "pthc", "pu55i", "pu55y", "pube", "pubes", "pubic", "pubiclice", "pubis", "pud", "pudboy", "pudd", "puddboy", "puke", "pula", "pule", "punani", "punanny", "punany", "punkass", "punky", "punta", "puntang", "purinapricness", "pusies", "puss", "pusse", "pussee", "pussi", "pussie", "pussies", "pussy", "pussycat", "pussydestroyer", "pussyeater", "pussyfucker", "pussylicker", "pussylicking", "pussylips", "pussylover", "pussypounder", "pussys", "pusy", "puta", "puto", "puuke", "puuker", "qahbeh", "quashie", "queaf", "queef", "quickie", "quicky", "quiff", "quim", "r-tard", "r-tards", "r5e", "ra8s", "racial", "radicals", "raghead", "ragheads", "raging boner", "raging", "ragingboner", "randy", "rape", "raped", "raper", "raping", "rapist", "raunch", "rautenberg", "rearend", "rearentry", "recktum", "rectal", "rectum", "rectus", "redleg", "redlegs", "redlight", "redneck", "rednecks", "redskin", "redskins", "reefer", "reestie", "reetard", "refugee", "reich", "renob", "rentafuck", "rere", "retard", "retarded", "retards", "retardz", "reverse cowgirl", "reversecowgirl", "rigger", "rimjaw", "rimjob", "rimming", "ritard", "rosebuds", "rosy palm and her 5 sisters", "rosy palm", "rosypalm", "rosypalmandher5sisters", "rosypalmandherefivesisters", "round eyes", "roundeye", "rtard", "rtards", "rump", "rumprammer", "ruski", "russki", "russkie", "rusty trombone", "rustytrombone", "s h i t", "s hit", "s&m", "s-h-1-t", "s-h-i-t", "s-o-b", "s.h.i.t.", "s.o.b.", "s0b", "s_h_i_t", "sadis", "sadism", "sadist", "sadom", "sambo", "sambos", "samckdaddy", "sanchez", "sand nigger", "sand niggers", "sandm", "sandnigger", "santorum", "scag", "scallywag", "scank", "scantily", "scat", "schaffer", "scheiss", "schizo", "schlampe", "schlong", "schmuck", "schvartse", "schvartsen", "schwartze", "schwartzen", "scissoring", "screwed", "screwing", "screwyou", "scroat", "scrog", "scrot", "scrote", "scrotum", "scrud", "seduce", "semen", "seppo", "seppos", "septics", "sex", "sexed", "sexfarm", "sexhound", "sexhouse", "sexi", "sexing", "sexkitten", "sexo", "sexpot", "sexslave", "sextogo", "sextoy", "sextoys", "sexual", "sexually", "sexwhore", "sexx", "sexxi", "sexxx", "sexxxi", "sexxxy", "sexxy", "sexy", "sexymoma", "sexyslim", "sh!+", "sh!t", "sh1t", "sh1ter", "sh1ts", "sh1tter", "sh1tz", "shag", "shagger", "shaggin", "shagging", "shamedame", "sharmuta", "sharmute", "shat", "shav", "shaved beaver", "shaved pussy", "shaved", "shavedbeaver", "shavedpussy", "shawtypimp", "sheeney", "shemale", "shhit", "shi+", "shibari", "shinola", "shipal", "shit ass", "shitass", "shitbag", "shitbagger", "shitblimp", "shitbrain", "shitbreath", "shitcan", "shitcunt", "shitdick", "shite", "shiteater", "shited", "shitey", "shitface", "shitfaced", "shitfit", "shitforbrains", "shitfuck", "shitfucker", "shitfull", "shithapens", "shithappens", "shithead", "shithole", "shithouse", "shiting", "shitings", "shitlist", "shitola", "shitoutofluck", "shits", "shitspitter", "shitstain", "shitt", "shitted", "shitter", "shitters", "shittiest", "shitting", "shittings", "shitty", "shity", "shitz", "shiz", "shiznit", "shortfuck", "shota", "shrimping", "shylock", "shylocks", "shyt", "shyte", "shytty", "shyty", "simp", "sissy", "sixsixsix", "sixtynine", "sixtyniner", "skag", "skanck", "skank", "skankbitch", "skankee", "skankey", "skankfuck", "skanks", "skankwhore", "skanky", "skankybitch", "skankywhore", "skeet", "skinflute", "skribz", "skullfuck", "skum", "skumbag", "skurwysyn", "skwa", "skwe", "slag", "slant", "slanteye", "slanty", "slapper", "slaughter", "slave", "slavedriver", "sleaze", "sleazy", "sleezebag", "sleezeball", "slideitin", "slimeball", "slimebucket", "slopehead", "slopeheads", "sloper", "slopers", "slopes", "slopey", "slopeys", "slopies", "slopy", "slut", "slutbag", "slutdumper", "slutkiss", "sluts", "slutt", "slutting", "slutty", "slutwear", "slutwhore", "slutz", "smack", "smackthemonkey", "smeg", "smegma", "smoker", "smut", "smutty", "snatch", "snatchpatch", "snigger", "sniggered", "sniggering", "sniggers", "sniper", "snowback", "snowballing", "snownigger", "snuff", "sob", "socksucker", "sodom", "sodomise", "sodomite", "sodomize", "sodomy", "son of a bitch", "son of a whore", "son-of-a-bitch", "son-of-a-whore", "sonofabitch", "sonofbitch", "sooties", "sooty", "souse", "soused", "soyboy", "spade", "spades", "spaghettibender", "spaghettinigger", "spank", "spankthemonkey", "spearchucker", "spearchuckers", "sperm", "spermacide", "spermbag", "spermhearder", "spermherder", "sphencter", "spic", "spick", "spicks", "spics", "spierdalaj", "spig", "spigotty", "spik", "spiks", "spitter", "splittail", "splooge moose", "splooge", "spludge", "spooge", "spread legs", "spreadeagle", "spunk", "spunky", "sqeh", "squa", "squarehead", "squareheads", "squaw", "squinty", "squirting", "stagg", "steamy", "stfu", "stiffy", "stoned", "stoner", "strap on", "strapon", "strappado", "stringer", "strip club", "stripclub", "stroke", "stroking", "stuinties", "stupid", "stupidfuck", "stupidfucker", "style doggy", "suck", "suckdick", "sucked", "sucker", "sucking", "suckme", "suckmyass", "suckmydick", "suckmytit", "suckoff", "sucks", "suicide girl", "suicide girls", "suicide", "suicidegirl", "suicidegirls", "suka", "sultry women", "sultry", "sultrywoman", "sultrywomen", "sumofabiatch", "swallow", "swallower", "swalow", "swamp guinea", "swamp guineas", "swastika", "swinger", "syphilis", "t i t", "t i ts", "t1t", "t1tt1e5", "t1tties", "taboo", "tacohead", "tacoheads", "taff", "tainted love", "tainted", "take off your", "tantra", "tar babies", "tar baby", "tarbaby", "tard", "taste my", "tastemy", "tawdry", "tea bagging", "teabagging", "teat", "teets", "teez", "terd", "terror", "terrorist", "teste", "testee", "testes", "testical", "testicle", "testicles", "testis", "thicklip", "thicklips", "thirdeye", "thirdleg", "threesome", "threeway", "throat", "throating", "thrust", "thug", "thundercunt", "tied up", "tig ol bitties", "tig old bitties", "tight white", "timber nigger", "timber niggers", "timbernigger", "tinkle", "titbitnipply", "titfuck", "titfucker", "titfuckin", "titi", "titjob", "titlicker", "titlover", "tits", "titt", "tittie", "tittie5", "tittiefucker", "titties", "tittis", "titty", "tittyfuck", "tittyfucker", "tittys", "tittywank", "titwank", "tity", "to murder", "toke", "tongethruster", "tongue in a", "tongueina", "tonguethrust", "tonguetramp", "toots", "topless", "tortur", "torture", "tosser", "towel head", "towel heads", "towelhead", "trailertrash", "tramp", "trannie", "tranny", "transsexual", "transvestite", "trashy", "tribadism", "triplex", "trisexual", "trois", "trojan", "trombone", "trots", "tub girl", "tubgirl", "tuckahoe", "tunneloflove", "turd", "turd burgler", "turnon", "tush", "tushy", "tw4t", "twat", "twathead", "twatlips", "twats", "twatty", "twatwaffle", "twink", "twinkie", "two girls one cup", "twobitwhore", "twunt", "twunter", "udge packer", "ukrop", "uncle tom", "unclefucker", "undies", "undressing", "unfuckable", "unwed", "upskirt", "uptheass", "upthebutt", "urethra play", "urethra", "urethraplay", "urophilia", "usama", "ussys", "uzi", "v a g i n a", "v14gra", "v1gra", "v4gra", "va-j-j", "va1jina", "vag", "vag1na", "vagiina", "vagina", "vaginal", "vaj1na", "vajina", "valium", "venus mound", "vgra", "viagra", "vibe", "vibr", "vibrater", "vibrator", "vietcong", "violet wand", "virgin", "virginbreaker", "vittu", "vixen", "vjayjay", "vodka", "vomit", "vorarephilia", "voyeur", "vulgar", "vullva", "vulva", "w00se", "w0p", "wab", "wad", "wang", "wank", "wanker", "wanking", "wanky", "waysted", "wazoo", "wedgie", "weed", "weenie", "weewee", "weiner", "weirdo", "welcher", "wench", "wet dream", "wetb", "wetback", "wetbacks", "wetdream", "wetspot", "wh00r", "wh0re", "wh0reface", "whacker", "whash", "whigger", "whiggers", "whiskeydick", "whiskydick", "whit", "white power", "white trash", "whitenigger", "whitepower", "whites", "whitetrash", "whitey", "whiteys", "whities", "whiz", "whoar", "whop", "whoralicious", "whore", "whorealicious", "whorebag", "whored", "whoreface", "whorefucker", "whorehopper", "whorehouse", "whores", "whoring", "wichser", "wigga", "wiggas", "wigger", "wiggers", "willie", "willies", "williewanker", "willy", "wn", "wog", "wogs", "woody", "wop", "wrapping men", "wrinkled starfish", "wtf", "wuss", "wuzzie", "x-rated", "xkwe", "xrated", "xtc", "xx", "xxx", "xxxxxx", "yank", "yaoi", "yarpie", "yarpies", "yeasty", "yed", "yellow showers", "yellowman", "yellowshowers", "yid", "yids", "yiffy", "yobbo", "yourboobs", "yourpenis", "yourtits", "zabourah", "zigabo", "zigabos", "zipperhead", "zipperheads", "zoophile", "zoophilia", "ðŸ–•", "arse", "arsehole", "as useful as tits on a bull", "bastard", "beef curtains", "bell", "bellend", "bent", "berk", "bint", "bitch", "blighter", "blimey", "blimey o'reilly", "bloodclaat", "bloody", "bloody hell", "bollocks", "bonk", "bugger", "bugger me", "bugger off", "built like a brick shit-house", "bukkake", "bullshit", "cack", "chav", "cheese eating surrender monkey", "choad", "chuffer", "clunge", "cobblers", "cock cheese", "cock jockey", "cock-up", "cocksucker", "cockwomble", "codger", "cor blimey", "corey", "crap", "crikey", "cunt", "daft", "daft cow", "damn", "dickhead", "did he bollocks!", "did i fuck as like!", "dildo", "dodgy", "duffer", "fanny", "feck", "flaps", "fuck", "fuck me sideways!", "fucking cunt", "fucktard", "gash", "ginger", "git", "gob shite", "goddam", "gorblimey", "gordon bennett", "gormless", "heâ€™s a knob", "hobknocker", "I'd rather snort my own cum", "jesus christ", "jizz", "knob", "knobber", "knobend", "knobhead", "ligger", "like fucking a dying man's handshake", "mad as a hatter", "manky", "minge", "minger", "minging", "motherfucker", "munter", "muppet", "naff", "nitwit", "nonce", "numpty", "nutter", "off their rocker", "pillock", "pish", "piss off", "piss-flaps", "pissed", "pissed off", "play the five-fingered flute", "plonker", "ponce", "poof", "pouf", "poxy", "prat", "prick", "prick", "prickteaser", "punani", "punny", "pussy", "randy", "rapey", "rat arsed", "rotter", "rubbish", "scrubber", "shag", "shite", "shitfaced", "skank", "slag", "slapper", "slut", "snatch", "sod-off", "son of a bitch", "spunk", "stick it up your arse!", "swine", "taking the piss", "tart", "tits", "toff", "tosser", "trollop", "tuss", "twat", "twonk", "u fukin wanker", "wally", "wanker", "wankstain", "wazzack", "whore"];
+
+						if (badWords.includes(query)) {
+							queryInput.setCustomValidity("Please enter another word");
+							queryInput.reportValidity();
+							return;
+						} else {
+							queryInput.setCustomValidity("");
+						}
+						form.style.cssText = "display:none;";
+						const resultDataDOM = shadowDocument.querySelector(".result_data");
+						checkClassLoading() && loadingDOM?.classList?.remove("hide-loading");
+						const config = {
+							headers: {
+								"Content-Type": "application/json"
+							},
+							method: "POST",
+							body: JSON.stringify(convertFormDataToJson())
+						};
+						fetch(`https://ai.pagefly.io/api/main-site/generate-shop-name`, config).then(data => data.json()).then(data => {
+							try {
+								let parsedData = JSON.parse(data.response);
+
+								if (query) {
+									shadowDocument.querySelector('.result #query').innerHTML = query;
+								} else {
+									shadowDocument.querySelector('.result #query').parentElement.style.display = 'none';
+								}
+								shadowDocument.querySelector('.brand_name').innerHTML = '';
+								shadowDocument.querySelector('.brand_name_list').innerHTML = '';
+								createList(parsedData, '.list.brand_name_list', 'brand_list');
+								createTable(parsedData, '.table.brand_name', 5);
+								!checkClassLoading() && loadingDOM?.classList?.add('hide-loading');
+								resultDataDOM.style.cssText = 'display: block;';
+								
+							} catch (error) {
+								form.style.cssText = "display:unset;";
+								loadingDOM?.classList?.add("hide-loading");
+								window.scrollTo({ top: 0, behavior: 'smooth' });
+							}
+						})
+					}
+				});
+				const reGenerateIdea = shadowDocument.querySelector(".re-generate-idea");
+				reGenerateIdea.addEventListener("click", function () {
+					shadowDocument.querySelector(".result_data").style.cssText = "display:none;";
+					const {
+						query
+					} = convertFormDataToJson();
+					form.style.cssText = "display:none;";
+					const resultDataDOM = shadowDocument.querySelector(".result_data");
+					checkClassLoading() && loadingDOM?.classList?.remove("hide-loading");
+					loadingDOM.scrollIntoView({
+						behavior: "smooth"
+					});
+					const config = {
+						headers: {
+							"Content-Type": "application/json"
+						},
+						method: "POST",
+						body: JSON.stringify(convertFormDataToJson())
+					};
+					fetch(`https://ai.pagefly.io/api/main-site/generate-shop-name`, config).then(data => data.json()).then(data => {
+						try {
+							let parsedData = JSON.parse(data.response);
+							if (query) {
+								shadowDocument.querySelector('.result #query').innerHTML = query;
+							} else {
+								shadowDocument.querySelector('.result #query').parentElement.style.display = 'none';
+							}
+
+							shadowDocument.querySelector('.brand_name').innerHTML = '';
+							shadowDocument.querySelector('.brand_name_list').innerHTML = '';
+							createList(parsedData, '.list.brand_name_list', 'brand_list');
+							createTable(parsedData, '.table.brand_name', 5);
+							!checkClassLoading() && loadingDOM?.classList?.add('hide-loading');
+							resultDataDOM.style.cssText = 'display: block;';
+							
+						} catch (error) {
+							form.style.cssText = "display:unset;";
+							loadingDOM?.classList?.add("hide-loading");
+							window.scrollTo({ top: 0, behavior: 'smooth' });
+						}
+					});
+					form.scrollIntoView({
+						behavior: "smooth"
+					})
+				});
+				shadowDocument.addEventListener('keydown', (event) => {
+					const config = {
+						headers: {
+							"Content-Type": "application/json"
+						},
+						method: "POST",
+						body: JSON.stringify(convertFormDataToJson())
+					};
+					if (event.key === 'Enter') {
+						event.preventDefault();
+						const btnSubmit = shadowDocument.querySelector(".submit-data");
+						btnSubmit.click();
+					}
+				})
+			</script>
+		</div>
+	</template>
+	
+	<script>
+		const shadow = document.querySelector('.shadow_dom').attachShadow({ mode: 'open' });
+		shadow.append(document.getElementById('tmpl').content.cloneNode(true));
+
+	</script>
+</body>
+</html>
