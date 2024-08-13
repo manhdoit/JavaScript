@@ -1,0 +1,523 @@
+<div class="shadow_dom">Shopify Name Ideas Generator</div>
+
+<template id="tmpl">
+	<div class="content_business_ideas_generator">
+		<style>
+			.content_business_ideas_generator {
+				font-family: 'Poppins';
+			}
+
+			.spin {
+				transform: rotate(45deg);
+				animation: rotate 1.2s linear infinite;
+				position: relative;
+				font-size: 20px;
+				width: 1em;
+				height: 1em;
+			}
+
+			.spin i {
+				position: absolute;
+				width: 9px;
+				height: 9px;
+				background-color: #55f;
+				border-radius: 100%;
+				transform: scale(.75);
+				transform-origin: 50% 50%;
+				opacity: .3;
+				animation: spinMove 1s linear infinite alternate;
+			}
+
+			.spin i:first-child {
+				top: 0;
+				left: 0
+			}
+
+			.spin i:nth-child(2) {
+				top: 0;
+				right: 0;
+				animation-delay: .4s
+			}
+
+			.spin i:nth-child(3) {
+				right: 0;
+				bottom: 0;
+				animation-delay: .8s
+			}
+
+			.spin i:nth-child(4) {
+				bottom: 0;
+				left: 0;
+				animation-delay: 1.2s
+			}
+
+			@keyframes rotate {
+				to {
+					-webkit-transform: rotate(405deg);
+					transform: rotate(405deg)
+				}
+			}
+
+			@keyframes spinMove {
+				to {
+					opacity: 1
+				}
+			}
+
+			.df {
+				display: flex;
+			}
+
+			.fdc {
+				flex-direction: column;
+			}
+
+			.jcc {
+				justify-content: center;
+			}
+
+			.aic {
+				align-items: center;
+			}
+
+			.fdc {
+				flex-direction: column;
+			}
+
+			[style*="--mt"] {
+				margin-top: var(--mt);
+			}
+
+			.table.brand_name td {
+				width: calc(100%/5);
+			}
+
+			.result_data {
+				display: none;
+			}
+
+			.hide-loading {
+				display: none;
+			}
+
+			.hidden {
+				display: none;
+			}
+
+			.form__content {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 40px;
+				color: #fff;
+				max-width: 840px;
+				margin: 0 auto;
+			}
+
+			.button--secondary,
+			.button--primary {
+				font-family: 'Poppins';
+				color: #fff;
+				font-size: 14px;
+				line-height: 24px;
+				min-height: 48px;
+				padding: 12px 24px;
+				background-color: #535AF7;
+				font-weight: bold;
+				border: none;
+				box-sizing: border-box;
+				text-align: center;
+				border-radius: 4px;
+			}
+
+			.button--secondary {
+				color: #16171A;
+				background: #fff;
+			}
+
+			.button--group {
+				gap: 24px;
+				margin-top: 48px;
+			}
+
+			select {
+				height: 44px;
+				background: #fff;
+				border: 1px solid #fff;
+				border-radius: 4px;
+				padding: 10px 16px;
+				width: 100%;
+			}
+
+			.form__title {
+				color: #fff;
+				font-size: 16px;
+				line-height: 1.5;
+				font-weight: bold;
+				margin: 0 0 8px;
+			}
+
+			.result_heading {
+				font-size: 25px;
+				color: #fff;
+				margin: 0 0 32px;
+			}
+
+			.result_require_list {
+				padding: 0;
+				margin: 0 0 64px 25px;
+			}
+
+			.result_require_list b {
+				color: #F25726;
+			}
+
+			.content {
+				color: #fff;
+			}
+
+			.brand_list {
+				list-style: decimal-leading-zero;
+				font-family: "SF Pro Display";
+				padding: 0;
+				margin: 0;
+				display: grid;
+				grid-template-columns: repeat(5, 1fr);
+				grid-gap: 32px 16px;
+			}
+
+			.brand_list li {
+				font-weight: bold;
+				font-size: 16px;
+				margin-left: 32px;
+				color: #F25726;
+			}
+
+			.brand_list li a {
+				color: #fff;
+			}
+
+			.brand-with-promo .brand_list {
+				grid-column: span 3;
+			}
+
+			.promoBanner {
+				padding-inline: 15px;
+			}
+
+			.promoBanner img {
+				width: 100%;
+				height: auto;
+				object-fit: contain;
+			}
+
+			@media(min-width: 768px) {
+				.brand-with-promo {
+					display: grid;
+					grid-template-columns: repeat(4, 1fr);
+				}
+			}
+
+			@media(max-width: 767px) {
+				.promoBanner {
+					padding-top: 15px;
+				}
+
+				.form__content {
+					grid-template-columns: 1fr;
+					grid-gap: 24px;
+				}
+
+				.brand_list {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+		</style>
+
+		<form method="post" autocomplete="off" class="generate-form hidden">
+			<div class="form__content">
+				<div class="control" id="industry">
+					<h3 class="form__title">What's your industry / business niche? </h3>
+					<div class="select">
+						<select required name="industry">
+                                <option value="" hidden>Select your industry</option>
+                            </select>
+					</div>
+				</div>
+				<div class="control hidden_" id="sub-industry">
+					<h3 class="form__title">Your Sub - industry? </h3>
+					<div class="select">
+						<select name="sub_industry">
+                                <option value="" hidden>Select your sub-industry</option>
+                            </select>
+					</div>
+				</div>
+			</div>
+			<div class="control df jcc hidden_" style="margin-top: 48px;">
+				<button class="button button--primary submit-data" type="button">Generate shop name</button>
+			</div>
+
+		</form>
+
+		<div class="content loading df jcc aic fdc" style="height: 400px;">
+			<div class="spin">
+				<i></i><i></i><i></i><i></i>
+			</div>
+			<div style="color: #fff;margin-top: 16px;">
+				Takes a few second to generate business ideas
+			</div>
+
+		</div>
+
+		<div class="content result result_data">
+			<h3 class="result_heading">Based on your requirements:</h3>
+			<ul class="result_require_list">
+				<li><b>Industry:</b> <span id="industry"></span></li>
+				<li><b>Sub - industry:</b> <span id="sub_industry"></span></li>
+			</ul>
+			<h3 class="result_heading">Top 20 Shopify brand names for your inspiration</h3>
+			<div class="list brand_name_list"></div>
+			<div class="table brand_name" hidden></div>
+			<p style="
+                    margin: 35px 0 0;
+                    color: rgba(255,255,255,0.6);
+                    font-family: 'SF Pro Display';
+                    font-size: 16px;
+                    ">
+				The list of stores is the real stores powered by the Shopify eCommerce platform. The main goal of this 
+				tool is 
+				to give you inspiration for your unique brand name. Please do not use the name generated by this tool.
+			</p>
+			<div class="control df button--group jcc">
+				<button class="button button--secondary re-generate-idea" type="button">Re-generate business 
+                        idea</button>
+				<a href="https://shopify.pxf.io/6bQaWb" class="button button--primary submit-data" target="_blank">
+					Get more ideas
+				</a>
+			</div>
+		</div>
+		<script>
+			const SCRIPT_API = "https://script.google.com/macros/s/AKfycbzvgcm0FypAZz7rmp6GlCkVyBJ4_6F1Bd1s-OA730FWcA0h9WiXnv-AN9aQuYPeHG7R/exec";
+                const shadowDocument = document.querySelector(".shadow_dom").shadowRoot;
+                const form = shadowDocument.querySelector(".generate-form");
+                const loadingDOM = shadowDocument.querySelector(".loading");
+                const addOptionForSelectDOM = (target, options) => {
+                    const industrySelectDOM = form.querySelector(`${target}`);
+                    if (industrySelectDOM.children.length > 1) {
+                        Array.from(industrySelectDOM.children).forEach(ele => {
+                            if (ele.value) {
+                                industrySelectDOM.removeChild(ele)
+                            }
+                        })
+                    }
+                    if (!options.length) {
+                        /*shadowDocument.querySelector("#sub-industry").classList.add("hidden");*/
+                        return
+                    }
+                    options.forEach(item => {
+                        const option = document.createElement("option");
+                        option.value = item;
+                        option.innerHTML = item;
+                        industrySelectDOM.appendChild(option)
+                    })
+                };
+    
+                function convertFormDataToJson(formData) {
+                    let object = {};
+                    formData.forEach((value, key) => object[key] = value);
+                    return object
+                }
+    
+                function createTable(data, detect, numCol) {
+                    const table = document.createElement("table");
+                    table.classList.add("table", "is-bordered");
+                    chunk(data, numCol).map(i => {
+                        if (i.length < numCol) {
+                            const numMissOperator = numCol - i.length;
+                            for (let index = 0; index < numMissOperator; index++) {
+                                i.push("")
+                            }
+                        }
+                        return i.map(i => i || {
+                            name: ""
+                        })
+                    }).forEach(rowData => {
+                        const row = table.insertRow();
+                        rowData.forEach(({
+                            name,
+                            url
+                        }) => {
+                            const cell = row.insertCell();
+                            if (name) {
+                                const a = document.createElement("a");
+                                a.innerHTML = name;
+                                a.href = `https://${url}`;
+                                a.target = "_blank";
+                                cell.appendChild(a)
+                            }
+                        })
+                    });
+                    shadowDocument.querySelector(`${detect}`)?.appendChild(table)
+                }
+                function createList(data, detect, ccs_class) {
+                    console.log(data);
+                    const ul = document.createElement("ul");
+                    ul.classList.add(ccs_class);
+                    data.forEach((e, i) => {
+                        const li = document.createElement("li");
+                        const a = document.createElement("a");
+                        a.innerHTML = e.name;
+                        a.href = `https://${e.url}`;
+                        a.target = "_blank";
+                        li.appendChild(a);
+                        ul.appendChild(li);
+                    });
+                    shadowDocument.querySelector(`${detect}`)?.append(ul);
+                };
+                function chunk(arr, numChunk) {
+                    return arr.reduce((chunkArr, item, index) => {
+                        const indexChunk = Math.floor(index / numChunk);
+                        chunkArr[indexChunk] = [].concat(chunkArr[indexChunk] || [], item);
+                        return chunkArr
+                    }, [])
+                };
+                function generatePromoBanner(industry) {
+                    const ThemeDistribute = {
+                        blumCelia: {
+                            thumbnail: "https://cdn.shopify.com/s/files/1/0090/9236/6436/files/SHTMRKT-1030-Blum-Celia.png?v=1716774926",
+                            affiliateLink: "https://shopify.pxf.io/DKvZ1a"
+                        },
+                        shineSophisticated: {
+                            thumbnail: "https://cdn.shopify.com/s/files/1/0090/9236/6436/files/SHTMRKT-1030-Shine-Sophisticated.png?v=1716774926",
+                            affiliateLink: "https://shopify.pxf.io/9g7jQj"
+                        },
+                        electroAudio: {
+                            thumbnail: "https://cdn.shopify.com/s/files/1/0090/9236/6436/files/SHTMRKT-1030-Electro-Audio.png?v=1716774927",
+                            affiliateLink: "https://shopify.pxf.io/5gvDL3"
+                        },
+                        shineEnergetic: {
+                            thumbnail: "https://cdn.shopify.com/s/files/1/0090/9236/6436/files/SHTMRKT-1030-Shine-Energetic.png?v=1716774927",
+                            affiliateLink: "https://shopify.pxf.io/AWv1aN"
+                        }
+                    };
+                    let themeName = '';
+                    switch (industry) {
+                        case 'Apparel':
+                        case 'Health':
+                        case 'Home & Garden':
+                        case 'Pets & Animals':
+                            themeName = 'blumCelia';
+                            break;
+                        case 'Photo & Video Services':
+                        case 'Beauty & Fitness':
+                        case 'Wedding':
+                            themeName = 'shineSophisticated';
+                            break;
+                        case 'Autos & Vehicles':
+                        case 'Business & Industrial':
+                        case 'Consumer Electronics':
+                        case 'Computers':
+                        case 'Smoking & Vaping':
+                        case 'Games':
+                            themeName = 'electroAudio';
+                            break;
+                        case 'Sports':
+                        case 'Toys & Hobbies':
+                        case 'Travel':
+                        case 'Safety & Survival':
+                            themeName = 'shineEnergetic';
+                            break;
+                    };
+
+                    if(themeName){
+                        const promoBanner = document.createElement('div');
+                        const promoBannerEl = `<a href="${ThemeDistribute[themeName].affiliateLink}" style="display: block;" target="_blank"><img src="${ThemeDistribute[themeName].thumbnail}" /></a>`;
+                        const promoBannerParent = shadowDocument.querySelector('.brand_name_list');
+                        promoBanner.classList.add("promoBanner");
+                        promoBanner.innerHTML = promoBannerEl;
+                        promoBannerParent.appendChild(promoBanner);
+                        promoBannerParent.classList.add('brand-with-promo');
+                    };
+                };
+                const checkClassLoading = () => {
+                    const loadingDOM = shadowDocument.querySelector(".loading");
+                    return [...loadingDOM.classList].includes("hide-loading")
+                };
+                window.addEventListener("load", function () {
+                    fetch(`${SCRIPT_API}?key=option`).then(data => data.json()).then(data => {
+                        addOptionForSelectDOM("#industry select", data.map(item => item.category).sort());
+                        window.shopify_ideas_generator = {
+                            data: data
+                        };
+                        !checkClassLoading() && loadingDOM?.classList?.add("hide-loading");
+                        form.classList.remove("hidden")
+                    })
+                });
+                form.querySelector("#industry select").addEventListener("change", function (e) {
+                    const optionData = window.shopify_ideas_generator.data.find(item => item.category === e.target.value);
+                    const optionSubIndustryData = optionData.sub_category.filter(i => !!i).sort();
+                    addOptionForSelectDOM("#sub-industry select", optionSubIndustryData);
+                    if (optionSubIndustryData.length) {
+                        shadowDocument.querySelector("#sub-industry").classList.remove("hidden")
+                    }
+                    shadowDocument.querySelector(".submit-data").parentElement.classList.remove("hidden")
+                });
+                const btnSubmit = shadowDocument.querySelector(".submit-data");
+                btnSubmit.addEventListener("click", function () {
+                    if (!form.checkValidity()) {
+                        form.reportValidity()
+                    } else {
+                        const formData = new FormData(form);
+                        const {
+                            industry,
+                            sub_industry
+                        } = convertFormDataToJson(new FormData(form));
+                        form.style.cssText = "display:none;";
+                        const resultDataDOM = shadowDocument.querySelector(".result_data");
+                        checkClassLoading() && loadingDOM?.classList?.remove("hide-loading");
+                        loadingDOM.scrollIntoView({
+                            behavior: "smooth"
+                        });
+                        const config = {
+                            headers: {
+                                "Content-Type": "text/plain"
+                            },
+                            method: "POST",
+                            body: JSON.stringify(convertFormDataToJson(new FormData(form)))
+                        };
+                        fetch(`${SCRIPT_API}`, config).then(data => data.json()).then(data => {
+                            shadowDocument.querySelector(".result #industry").innerHTML = industry;
+                            if (sub_industry) {
+                                shadowDocument.querySelector(".result #sub_industry").innerHTML = sub_industry
+                            } else {
+                                shadowDocument.querySelector(".result #sub_industry").parentElement.style.display = "none"
+                            }
+                            shadowDocument.querySelector(".brand_name").innerHTML = "";
+                            shadowDocument.querySelector(".brand_name_list").innerHTML = "";
+                            createList(data, ".list.brand_name_list", "brand_list");
+                            createTable(data, ".table.brand_name", 5);
+                            !checkClassLoading() && loadingDOM?.classList?.add("hide-loading");
+                            resultDataDOM.style.cssText = "display: block;";
+                            generatePromoBanner(industry);
+                        })
+                    }
+                });
+                const reGenerateIdea = shadowDocument.querySelector(".re-generate-idea");
+                reGenerateIdea.addEventListener("click", function () {
+                    shadowDocument.querySelectorAll(".generate-form select").forEach(ele => ele.value = '');
+                    shadowDocument.querySelector(".result_data").style.cssText = "display:none;";
+                    shadowDocument.querySelector(".brand_name_list").classList.remove('brand-with-promo');
+                    form.style.cssText = "display: block;";
+
+                    form.scrollIntoView({
+                        behavior: "smooth"
+                    })
+                });
+		</script>
+	</div>
+</template>
+
+<script>
+	const shadow = document.querySelector('.shadow_dom').attachShadow({ mode: 'open' });
+        shadow.append(document.getElementById('tmpl').content.cloneNode(true));
+
+</script>

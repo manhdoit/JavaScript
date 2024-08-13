@@ -1,0 +1,8 @@
+li {
+    list-style-type: none;
+}
+.flag {
+    width: 20px;
+    height: 15px;
+    object-fit: contain;
+}

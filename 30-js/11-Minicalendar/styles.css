@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: cornflowerblue;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calendar{
+    display: grid;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 5px;
+    background: red;
+    box-shadow: 0px 0px 5px 1px #000;
+    overflow: hidden;
+}
+
+.calendar span {
+    padding: 15px;
+    background-color: white;
+    display: block
+}
+
+.calendar .calendar-month {
+    background-color: chocolate;
+}
+
+.calendar-day-number {
+    font-size: 40px;
+}
