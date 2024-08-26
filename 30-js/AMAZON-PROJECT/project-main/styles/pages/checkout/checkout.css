@@ -121,9 +121,8 @@
 .quantity-input {
   width: 30px;
 }
-.product-quantity .disable {
-  display: none;
-}
+.is-editing-quantity .update-quantity-link,
+.is-editing-quantity .quantity-label,
 .cart-item-quantity-container{
   display: none;
 }
