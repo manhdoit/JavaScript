@@ -1,3 +1,6 @@
+import {cart, addToCart} from '../data/cart.js';
+import {products} from '../data/products.js';
+import { formatCurrency } from './utils/money.js';
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -21,7 +24,7 @@ products.forEach((product) => {
       </div>
 
       <div class="product-price">
-        $${(product.priceCents / 100).toFixed(2)}
+        $${formatCurrency(product.priceCents)}
       </div>
 
       <div class="product-quantity-container">
@@ -47,38 +50,29 @@ products.forEach((product) => {
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
+
+
+
+const addToCartMessage = (productId) => {
+  const addtoCartMessage = document.querySelector(`.js-product-add-to-cart-message-${productId}`);
+
+  addtoCartMessage.classList.add('show');
+  setTimeout(() => {
+    addtoCartMessage.classList.remove('show');
+  }, 2000);
+};
+
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
+      
       const productId = button.dataset.productId;
       const productQuantity = Number(document.querySelector(`.js-product-quantity-${productId}`).value);
-      const addtoCartMessage = document.querySelector(`.js-product-add-to-cart-message-${productId}`);
-      let matchingItem;
-      cart.forEach((item) => {
-        if (productId === item.productId) {
-          matchingItem = item;
-        }
-      });
-
-      if (matchingItem) {
-        matchingItem.quantity += productQuantity;
-      } else {
-        cart.push({
-          productId: productId,
-          quantity: productQuantity
-        });
+      if (productQuantity < 1) {
+        return;
       }
+      addToCart(productId);
+      addToCartMessage(productId);
 
-      let cartQuantity = 0;
-
-      cart.forEach((item) => {
-        cartQuantity += item.quantity;
-      });
-      addtoCartMessage.classList.add('show');
-      setTimeout(() => {
-        addtoCartMessage.classList.remove('show');
-      }, 2000);
-      document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQuantity;
     });
   });
